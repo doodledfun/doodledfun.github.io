@@ -78,27 +78,28 @@ function generateRandomSentence() {
 }
 
 function handleKeyPress(event) {
-    const pressedKey = event.key.toLowerCase();
+    const inputText = event.target.value.toLowerCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
     for (let i = 0; i < charSpans.length; i++) {
         const charSpan = charSpans[i];
         
-        if (i === inputIndex) {
-            if (pressedKey === currentSentence[i].toLowerCase()) {
+        if (i < inputText.length) {
+            if (inputText[i] === currentSentence[i].toLowerCase()) {
                 charSpan.style.color = "black";
             } else {
                 charSpan.style.color = "red";
             }
-            inputIndex++;
-            break;
+        } else {
+            charSpan.style.color = "#D1D1D1";
         }
     }
 }
 
-let inputIndex = 0;
-
 generateRandomSentence();
 
-document.addEventListener("keydown", handleKeyPress);
+const inputElement = document.createElement("input");
+inputElement.type = "text";
+inputElement.addEventListener("input", handleKeyPress);
+document.getElementById("container").appendChild(inputElement);
