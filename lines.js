@@ -83,16 +83,28 @@ function handleKeyDown(event) {
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
-    if (currentIndex < currentSentence.length) {
-        const currentCharSpan = charSpans[currentIndex];
+    if (/^[A-Z]$/.test(typedChar) || typedChar === "Backspace") {
+        event.preventDefault();
         
-        if (typedChar === currentSentence[currentIndex]) {
-            currentCharSpan.style.color = "black";
+        if (typedChar === "Backspace") {
+            if (currentIndex > 0) {
+                currentIndex--;
+                const currentCharSpan = charSpans[currentIndex];
+                currentCharSpan.style.color = "#D1D1D1";
+            }
         } else {
-            currentCharSpan.style.color = "red";
+            if (currentIndex < currentSentence.length) {
+                const currentCharSpan = charSpans[currentIndex];
+                
+                if (typedChar === currentSentence[currentIndex]) {
+                    currentCharSpan.style.color = "black";
+                } else {
+                    currentCharSpan.style.color = "red";
+                }
+                
+                currentIndex++;
+            }
         }
-        
-        currentIndex++;
     }
     
     if (currentIndex === currentSentence.length) {
