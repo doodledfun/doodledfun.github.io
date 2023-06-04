@@ -82,7 +82,7 @@ function generateRandomSentence() {
 }
 
 function handleKeyPress(event) {
-    const inputText = event.target.value.toLowerCase();
+    const inputText = event.key.toLowerCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
@@ -103,7 +103,4 @@ function handleKeyPress(event) {
 
 generateRandomSentence();
 
-const inputElement = document.createElement("input");
-inputElement.type = "text";
-inputElement.addEventListener("input", handleKeyPress);
-document.getElementById("container").appendChild(inputElement);
+document.addEventListener("keypress", handleKeyPress);
