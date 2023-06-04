@@ -87,16 +87,11 @@ function handleKeyDown(event) {
         event.preventDefault();
 
         if (typedChar === "Backspace") {
-            let startIndex = currentIndex - 1;
-            while (startIndex >= 0 && currentSentence[startIndex] === " ") {
-                startIndex--;
-            }
-            if (startIndex >= 0) {
-                for (let i = startIndex; i < currentIndex; i++) {
-                    const currentCharSpan = charSpans[i];
-                    currentCharSpan.style.color = "#D1D1D1";
-                }
-                currentIndex = startIndex;
+            if (currentIndex > 0) {
+                currentIndex--;
+                const currentCharSpan = charSpans[currentIndex];
+                currentCharSpan.style.color = "#D1D1D1";
+                currentCharSpan.textContent = currentSentence[currentIndex];
             }
         } else if (typedChar === " ") {
             if (currentIndex < currentSentence.length && currentSentence[currentIndex] === " ") {
