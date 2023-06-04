@@ -1,12 +1,10 @@
 const sentenceStructures = [
-    "I promise to keep my {pet} away from my {object} in {class}.",
-    "I promise to keep my {pet} away from the {food} in {class}.",
     "I will not {action} the {object} during {class}.",
+    "I promise to keep my {pet} away from my {object} in {class}.",
     "I will not {action} the {food} during {class}.",
+    "I promise to keep my {pet} away from the {food} in {class}.",
     "I will not {action} {food} during {class}.",
-    "I will not {action} {object} during {class}.",
-    "I will not throw a {object} at the {class} teacher.",
-    "I will not throw my {pet} at the {class} teacher."
+    "I will not {action} {object} during {class}."
 ];
 
 const objects = [
@@ -53,6 +51,7 @@ const pets = [
 
 let currentSentence = "";
 let currentIndex = 0;
+let versionNumber = 1;
 
 function generateRandomSentence() {
     const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
@@ -130,6 +129,8 @@ function handleKeyDown(event) {
     
     if (currentIndex === currentSentence.length) {
         currentIndex = 0;
+        versionNumber++;
+        document.getElementById("versionNumber").textContent = versionNumber.toFixed(1);
         setTimeout(generateRandomSentence, 1000);
     }
 }
