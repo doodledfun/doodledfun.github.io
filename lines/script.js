@@ -50,6 +50,7 @@ const pets = [
 ];
 
 let currentSentence = "";
+let userInput = "";
 
 function generateRandomSentence() {
     const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
@@ -78,15 +79,23 @@ function generateRandomSentence() {
 }
 
 function handleKeyPress(event) {
-    const inputText = event.target.value.toLowerCase();
+    const keyPressed = event.key.toLowerCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
+    
+    if (keyPressed === "backspace") {
+        userInput = userInput.slice(0, -1); // Remove the last character
+    } else if (keyPressed === " ") {
+        userInput += " "; // Add a space
+    } else if (keyPressed.length === 1) {
+        userInput += keyPressed; // Append the typed character
+    }
     
     for (let i = 0; i < charSpans.length; i++) {
         const charSpan = charSpans[i];
         
-        if (i < inputText.length) {
-            if (inputText[i] === currentSentence[i].toLowerCase()) {
+        if (i < userInput.length) {
+            if (userInput[i] === currentSentence[i].toLowerCase()) {
                 charSpan.style.color = "black";
             } else {
                 charSpan.style.color = "red";
@@ -99,8 +108,7 @@ function handleKeyPress(event) {
 
 generateRandomSentence();
 
-const inputElement = document.createElement("input");
-inputElement.type = "text";
-inputElement.style.display = "none"; // Hide the input box
-inputElement.addEventListener("input", handleKeyPress);
-document.getElementById("container").appendChild(inputElement);
+document.addEventListener("keydown", handleKeyPress);
+
+const containerDiv = document.getElementById("container");
+containerDiv.style.display = "none"; // Hide the container div
