@@ -50,6 +50,7 @@ const pets = [
 ];
 
 let currentSentence = "";
+let currentIndex = 0;
 
 function generateRandomSentence() {
     const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
@@ -77,29 +78,28 @@ function generateRandomSentence() {
     }
 }
 
-function handleKeyPress(event) {
-    const inputText = event.target.value.toUpperCase();
+function handleKeyDown(event) {
+    const typedChar = event.key.toUpperCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
-    for (let i = 0; i < charSpans.length; i++) {
-        const charSpan = charSpans[i];
+    if (currentIndex < currentSentence.length) {
+        const currentCharSpan = charSpans[currentIndex];
         
-        if (i < inputText.length) {
-            if (inputText[i] === currentSentence[i]) {
-                charSpan.style.color = "black";
-            } else {
-                charSpan.style.color = "red";
-            }
+        if (typedChar === currentSentence[currentIndex]) {
+            currentCharSpan.style.color = "black";
         } else {
-            charSpan.style.color = "#D1D1D1";
+            currentCharSpan.style.color = "red";
         }
+        
+        currentIndex++;
+    }
+    
+    if (currentIndex === currentSentence.length) {
+        currentIndex = 0;
+        setTimeout(generateRandomSentence, 1000);
     }
 }
 
 generateRandomSentence();
-
-const inputElement = document.createElement("input");
-inputElement.type = "text";
-inputElement.addEventListener("input", handleKeyPress);
-document.getElementById("container").appendChild(inputElement);
+document.addEventListener("keydown", handleKeyDown);
