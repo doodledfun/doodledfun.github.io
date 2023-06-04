@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Doodles';
+    src: url('doodles.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+}
+
+#container {
+    text-align: center;
+}
+
+#text {
+    color: #888;
+    font-size: 24px;
+    font-family: 'Doodles', sans-serif;
+}
+
+.correct {
+    color: black;
+}
+
+.incorrect {
+    color: red;
+}
