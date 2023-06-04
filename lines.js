@@ -50,8 +50,6 @@ const pets = [
 ];
 
 let currentSentence = "";
-let currentIndex = 0;
-let versionNumber = 1;
 
 function generateRandomSentence() {
     const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
@@ -79,61 +77,30 @@ function generateRandomSentence() {
     }
 }
 
-function handleKeyDown(event) {
-    const typedChar = event.key.toUpperCase();
+function handleKeyPress(event) {
+    const inputText = event.target.value.toLowerCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
-    if (/^[A-Z]$/.test(typedChar) || typedChar === "Backspace" || typedChar === " ") {
-        event.preventDefault();
+    for (let i = 0; i < charSpans.length; i++) {
+        const charSpan = charSpans[i];
         
-        if (typedChar === "Backspace") {
-            if (currentIndex > 0) {
-                if (event.ctrlKey) {
-                    let wordStartIndex = currentIndex - 1;
-                    while (wordStartIndex > 0 && currentSentence[wordStartIndex - 1] !== " ") {
-                        wordStartIndex--;
-                    }
-                    for (let i = currentIndex - 1; i >= wordStartIndex; i--) {
-                        const currentCharSpan = charSpans[i];
-                        currentCharSpan.style.color = "#D1D1D1";
-                    }
-                    currentIndex = wordStartIndex;
-                } else {
-                    currentIndex--;
-                    const currentCharSpan = charSpans[currentIndex];
-                    currentCharSpan.style.color = "#D1D1D1";
-                }
-            }
-        } else if (typedChar === " ") {
-            // Spacebar pressed
-            if (currentIndex < currentSentence.length && currentSentence[currentIndex] === " ") {
-                const currentCharSpan = charSpans[currentIndex];
-                currentCharSpan.style.color = "black";
-                currentIndex++;
+        if (i < inputText.length) {
+            if (inputText[i] === currentSentence[i].toLowerCase()) {
+                charSpan.style.color = "black";
+            } else {
+                charSpan.style.color = "red";
             }
         } else {
-            if (currentIndex < currentSentence.length) {
-                const currentCharSpan = charSpans[currentIndex];
-                
-                if (typedChar === currentSentence[currentIndex]) {
-                    currentCharSpan.style.color = "black";
-                } else {
-                    currentCharSpan.style.color = "red";
-                }
-                
-                currentIndex++;
-            }
+            charSpan.style.color = "#D1D1D1";
         }
-    }
-    
-    if (currentIndex === currentSentence.length) {
-        currentIndex = 0;
-        versionNumber++;
-        document.getElementById("versionNumber").textContent = versionNumber.toFixed(1);
-        setTimeout(generateRandomSentence, 1000);
     }
 }
 
 generateRandomSentence();
-document.addEventListener("keydown", handleKeyDown, false);
+
+const inputElement = document.createElement("input");
+inputElement.type = "text";
+inputElement.style.display = "none"; // Hide the input box
+inputElement.addEventListener("input", handleKeyPress);
+document.getElementById("container").appendChild(inputElement);
