@@ -8,13 +8,13 @@ const sentenceStructures = [
 ];
 
 const objects = [
-    "a pencil",
-    "a cell phone",
-    "a homework",
-    "a book",
-    "a teacher",
-    "a potato",
-    "a notebook"
+    "pencil",
+    "cell phone",
+    "homework",
+    "book",
+    "teacher",
+    "potato",
+    "notebook"
 ];
 
 const classes = [
@@ -34,10 +34,10 @@ const actions = [
 ];
 
 const foods = [
-    "a pizza",
-    "some chips",
-    "a sandwich",
-    "a cookie",
+    "pizza",
+    "chips",
+    "sandwich",
+    "cookie",
     "ice cream"
 ];
 
@@ -50,7 +50,6 @@ const pets = [
 ];
 
 let currentSentence = "";
-let currentIndex = 0;
 
 function generateRandomSentence() {
     const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
@@ -59,7 +58,7 @@ function generateRandomSentence() {
     const randomAction = actions[Math.floor(Math.random() * actions.length)];
     const randomFood = foods[Math.floor(Math.random() * foods.length)];
     const randomPet = pets[Math.floor(Math.random() * pets.length)];
-
+    
     currentSentence = randomStructure
         .replace("{object}", randomObject)
         .replace("{class}", randomClass)
@@ -67,10 +66,10 @@ function generateRandomSentence() {
         .replace("{food}", randomFood)
         .replace("{pet}", randomPet)
         .toUpperCase();
-
+    
     const textDiv = document.getElementById("text");
     textDiv.innerHTML = ""; // Clear previous content
-
+    
     for (let i = 0; i < currentSentence.length; i++) {
         const charSpan = document.createElement("span");
         charSpan.textContent = currentSentence[i];
@@ -78,44 +77,30 @@ function generateRandomSentence() {
     }
 }
 
-function handleKeyDown(event) {
-    const typedChar = event.key.toUpperCase();
+function handleKeyPress(event) {
+    const inputText = event.target.value.toLowerCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
-
-    if (/^[A-Z]$/.test(typedChar) || typedChar === "Backspace" || typedChar === " ") {
-        event.preventDefault();
-
-        if (typedChar === "Backspace") {
-            if (currentIndex > 0) {
-                currentIndex--;
-                const currentCharSpan = charSpans[currentIndex];
-                currentCharSpan.style.color = "#D1D1D1";
-                currentCharSpan.textContent = currentSentence[currentIndex];
-            }
-        } else if (typedChar === " ") {
-            if (currentIndex < currentSentence.length && currentSentence[currentIndex] === " ") {
-                currentIndex++;
+    
+    for (let i = 0; i < charSpans.length; i++) {
+        const charSpan = charSpans[i];
+        
+        if (i < inputText.length) {
+            if (inputText[i] === currentSentence[i].toLowerCase()) {
+                charSpan.style.color = "black";
+            } else {
+                charSpan.style.color = "red";
             }
         } else {
-            if (currentIndex < currentSentence.length) {
-                const currentCharSpan = charSpans[currentIndex];
-
-                if (typedChar === currentSentence[currentIndex]) {
-                    currentCharSpan.style.color = "black";
-                    currentIndex++;
-                } else {
-                    currentCharSpan.style.color = "red";
-                }
-            }
+            charSpan.style.color = "#D1D1D1";
         }
-    }
-
-    if (currentIndex === currentSentence.length) {
-        currentIndex = 0;
-        setTimeout(generateRandomSentence, 1000);
     }
 }
 
 generateRandomSentence();
-document.addEventListener("keydown", handleKeyDown, false);
+
+const inputElement = document.createElement("input");
+inputElement.type = "text";
+inputElement.style.display = "none"; // Hide the input box
+inputElement.addEventListener("input", handleKeyPress);
+document.getElementById("container").appendChild(inputElement);
