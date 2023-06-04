@@ -102,3 +102,27 @@ let inputIndex = 0;
 generateRandomSentence();
 
 document.addEventListener("keydown", handleKeyPress);
+
+function handleKeyPress(event) {
+    const pressedKey = event.key.toLowerCase();
+    const textDiv = document.getElementById("text");
+    const charSpans = textDiv.children;
+    
+    if (event.key === "Backspace" && inputIndex > 0) {
+        inputIndex--;
+        charSpans[inputIndex].style.color = "#D1D1D1";
+        return;
+    }
+    
+    if (inputIndex < charSpans.length) {
+        const charSpan = charSpans[inputIndex];
+        
+        if (pressedKey === currentSentence[inputIndex].toLowerCase()) {
+            charSpan.style.color = "black";
+        } else {
+            charSpan.style.color = "red";
+        }
+        
+        inputIndex++;
+    }
+}
