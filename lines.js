@@ -78,7 +78,7 @@ function generateRandomSentence() {
 }
 
 function handleKeyPress(event) {
-    const inputText = event.key.toUpperCase();
+    const inputText = event.target.value.toUpperCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
@@ -99,4 +99,7 @@ function handleKeyPress(event) {
 
 generateRandomSentence();
 
-document.addEventListener("keydown", handleKeyPress);
+const inputElement = document.createElement("input");
+inputElement.type = "text";
+inputElement.addEventListener("input", handleKeyPress);
+document.getElementById("container").appendChild(inputElement);
