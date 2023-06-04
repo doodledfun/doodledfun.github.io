@@ -1,10 +1,10 @@
 const sentenceStructures = [
-    "I will not {action} the {object} during {class}",
-    "I promise to keep my {pet} away from my {object} in {class}",
-    "I will not {action} the {food} during {class}",
-    "I promise to keep my {pet} away from the {food} in {class}",
-    "I will not {action} {food} during {class}",
-    "I will not {action} {object} during {class}"
+    "I will not {action} the {object} during {class}.",
+    "I promise to keep my {pet} away from my {object} in {class}.",
+    "I will not {action} the {food} during {class}.",
+    "I promise to keep my {pet} away from the {food} in {class}.",
+    "I will not {action} {food} during {class}.",
+    "I will not {action} {object} during {class}."
 ];
 
 const objects = [
@@ -51,10 +51,6 @@ const pets = [
 
 let currentSentence = "";
 
-function removePunctuation(sentence) {
-    return sentence.replace(/[^\w\s]/g, "");
-}
-
 function generateRandomSentence() {
     const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
     const randomObject = objects[Math.floor(Math.random() * objects.length)];
@@ -63,7 +59,7 @@ function generateRandomSentence() {
     const randomFood = foods[Math.floor(Math.random() * foods.length)];
     const randomPet = pets[Math.floor(Math.random() * pets.length)];
     
-    currentSentence = removePunctuation(randomStructure)
+    currentSentence = randomStructure
         .replace("{object}", randomObject)
         .replace("{class}", randomClass)
         .replace("{action}", randomAction)
@@ -82,25 +78,27 @@ function generateRandomSentence() {
 }
 
 function handleKeyPress(event) {
-    const inputText = event.key.toLowerCase();
+    const pressedKey = event.key.toLowerCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
     for (let i = 0; i < charSpans.length; i++) {
         const charSpan = charSpans[i];
         
-        if (i < inputText.length) {
-            if (inputText[i] === currentSentence[i].toLowerCase()) {
+        if (i === inputIndex) {
+            if (pressedKey === currentSentence[i].toLowerCase()) {
                 charSpan.style.color = "black";
             } else {
                 charSpan.style.color = "red";
             }
-        } else {
-            charSpan.style.color = "#D1D1D1";
+            inputIndex++;
+            break;
         }
     }
 }
 
+let inputIndex = 0;
+
 generateRandomSentence();
 
-document.addEventListener("keypress", handleKeyPress);
+document.addEventListener("keydown", handleKeyPress);
