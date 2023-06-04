@@ -1,7 +1,7 @@
 const sentenceStructures = [
     "I will not {action} the {object} during {class}",
-    "I promise to keep my {pet} away from my {object} in {class}",
     "I will not {action} the {food} during {class}",
+    "I promise to keep my {pet} away from my {object} in {class}",
     "I promise to keep my {pet} away from the {food} in {class}",
     "I will not {action} {food} during {class}",
     "I will not {action} {object} during {class}"
