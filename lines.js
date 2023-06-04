@@ -49,8 +49,6 @@ const pets = [
     "fish"
 ];
 
-let currentSentence = "";
-
 function generateRandomSentence() {
     const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
     const randomObject = objects[Math.floor(Math.random() * objects.length)];
@@ -59,7 +57,7 @@ function generateRandomSentence() {
     const randomFood = foods[Math.floor(Math.random() * foods.length)];
     const randomPet = pets[Math.floor(Math.random() * pets.length)];
     
-    currentSentence = randomStructure
+    const currentSentence = randomStructure
         .replace("{object}", randomObject)
         .replace("{class}", randomClass)
         .replace("{action}", randomAction)
@@ -68,38 +66,7 @@ function generateRandomSentence() {
         .toUpperCase();
     
     const textDiv = document.getElementById("text");
-    textDiv.innerHTML = ""; // Clear previous content
-    
-    for (let i = 0; i < currentSentence.length; i++) {
-        const charSpan = document.createElement("span");
-        charSpan.textContent = currentSentence[i];
-        textDiv.appendChild(charSpan);
-    }
-}
-
-function handleKeyPress(event) {
-    const inputText = event.target.value.toLowerCase();
-    const textDiv = document.getElementById("text");
-    const charSpans = textDiv.children;
-    
-    for (let i = 0; i < charSpans.length; i++) {
-        const charSpan = charSpans[i];
-        
-        if (i < inputText.length) {
-            if (inputText[i] === currentSentence[i].toLowerCase()) {
-                charSpan.style.color = "black";
-            } else {
-                charSpan.style.color = "red";
-            }
-        } else {
-            charSpan.style.color = "#D1D1D1";
-        }
-    }
+    textDiv.textContent = currentSentence;
 }
 
 generateRandomSentence();
-
-const inputElement = document.createElement("input");
-inputElement.type = "text";
-inputElement.addEventListener("input", handleKeyPress);
-document.getElementById("container").appendChild(inputElement);
