@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>doodled.fun</title>
+    <style>
+        @font-face {
+            font-family: 'papernotes';
+            src: url('papernotes.otf');
+        }
+
+        body {
+            font-family: 'papernotes', sans-serif;
+            text-align: center;
+            text-transform: lowercase; /* Convert all text to lowercase */
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery img:hover::before {
+            content: attr(alt);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>doodled.fun</h1>
+    <h2>my little place to publish weekly mini-projects</h2>
+    <div class="gallery">
+        <a href="image1.jpg" target="_blank">
+            <img src="image1.jpg" alt="Image 1">
+        </a>
+        <a href="image2.jpg" target="_blank">
+            <img src="image2.jpg" alt="Image 2">
+        </a>
+        <a href="image3.jpg" target="_blank">
+            <img src="image3.jpg" alt="Image 3">
+        </a>
+        <!-- Add more images here -->
+    </div>
+
+    <script>
+        // JavaScript code can be added here if needed
+    </script>
+</body>
+</html>
