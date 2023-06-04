@@ -4,9 +4,7 @@ const sentenceStructures = [
     "I will not {action} the {food} during {class}.",
     "I promise to keep my {pet} away from the {food} in {class}.",
     "I will not {action} {food} during {class}.",
-    "I will not {action} {object} during {class}.",
-    "I will not throw a {object} at the {class} teacher.",
-    "I will not throw my {pet} at the {class} teacher."
+    "I will not {action} {object} during {class}."
 ];
 
 const objects = [
@@ -85,14 +83,33 @@ function handleKeyDown(event) {
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
-    if (/^[A-Z]$/.test(typedChar) || typedChar === "Backspace") {
+    if (/^[A-Z]$/.test(typedChar) || typedChar === "Backspace" || typedChar === " ") {
         event.preventDefault();
         
         if (typedChar === "Backspace") {
             if (currentIndex > 0) {
-                currentIndex--;
+                if (event.ctrlKey) {
+                    let wordStartIndex = currentIndex - 1;
+                    while (wordStartIndex > 0 && currentSentence[wordStartIndex - 1] !== " ") {
+                        wordStartIndex--;
+                    }
+                    for (let i = currentIndex - 1; i >= wordStartIndex; i--) {
+                        const currentCharSpan = charSpans[i];
+                        currentCharSpan.style.color = "#D1D1D1";
+                    }
+                    currentIndex = wordStartIndex;
+                } else {
+                    currentIndex--;
+                    const currentCharSpan = charSpans[currentIndex];
+                    currentCharSpan.style.color = "#D1D1D1";
+                }
+            }
+        } else if (typedChar === " ") {
+            // Spacebar pressed
+            if (currentIndex < currentSentence.length && currentSentence[currentIndex] === " ") {
                 const currentCharSpan = charSpans[currentIndex];
-                currentCharSpan.style.color = "#D1D1D1";
+                currentCharSpan.style.color = "black";
+                currentIndex++;
             }
         } else {
             if (currentIndex < currentSentence.length) {
