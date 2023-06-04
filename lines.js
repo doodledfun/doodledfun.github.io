@@ -135,4 +135,4 @@ function handleKeyDown(event) {
 }
 
 generateRandomSentence();
-document.addEventListener("keydown", handleKeyDown);
+document.addEventListener("keydown", handleKeyDown, false);
