@@ -101,5 +101,6 @@ generateRandomSentence();
 
 const inputElement = document.createElement("input");
 inputElement.type = "text";
+inputElement.style.display = "none"; // Hide the input box
 inputElement.addEventListener("input", handleKeyPress);
 document.getElementById("container").appendChild(inputElement);
