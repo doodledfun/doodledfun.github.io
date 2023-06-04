@@ -108,6 +108,21 @@ function handleKeyPress(event) {
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
+    if (event.ctrlKey && event.key === "Backspace" && inputIndex > 0) {
+        let wordStartIndex = inputIndex - 1;
+        while (wordStartIndex >= 0 && currentSentence[wordStartIndex].trim() !== "") {
+            wordStartIndex--;
+        }
+        wordStartIndex++;
+        
+        for (let i = wordStartIndex; i < inputIndex; i++) {
+            charSpans[i].style.color = "#D1D1D1";
+        }
+        
+        inputIndex = wordStartIndex;
+        return;
+    }
+    
     if (event.key === "Backspace" && inputIndex > 0) {
         inputIndex--;
         charSpans[inputIndex].style.color = "#D1D1D1";
