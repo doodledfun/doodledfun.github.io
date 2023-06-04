@@ -65,7 +65,7 @@ function generateRandomSentence() {
         .replace("{action}", randomAction)
         .replace("{food}", randomFood)
         .replace("{pet}", randomPet)
-        .toLowerCase();
+        .toUpperCase();
     
     const textDiv = document.getElementById("text");
     textDiv.innerHTML = ""; // Clear previous content
@@ -78,28 +78,27 @@ function generateRandomSentence() {
 }
 
 function handleKeyPress(event) {
-    const inputText = event.target.value.toLowerCase();
+    const pressedKey = event.key.toLowerCase();
     const textDiv = document.getElementById("text");
     const charSpans = textDiv.children;
     
     for (let i = 0; i < charSpans.length; i++) {
         const charSpan = charSpans[i];
         
-        if (i < inputText.length) {
-            if (inputText[i] === currentSentence[i]) {
+        if (i === inputIndex) {
+            if (pressedKey === currentSentence[i].toLowerCase()) {
                 charSpan.style.color = "black";
             } else {
                 charSpan.style.color = "red";
             }
-        } else {
-            charSpan.style.color = "#D1D1D1";
+            inputIndex++;
+            break;
         }
     }
 }
 
+let inputIndex = 0;
+
 generateRandomSentence();
 
-const inputElement = document.createElement("input");
-inputElement.type = "text";
-inputElement.addEventListener("input", handleKeyPress);
-document.getElementById("container").appendChild(inputElement);
+document.addEventListener("keydown", handleKeyPress);
