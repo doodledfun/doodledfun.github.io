@@ -7,29 +7,24 @@
             font-family: 'papernotes';
             src: url('papernotes.otf');
         }
-
         body {
             font-family: 'papernotes', sans-serif;
             text-align: center;
             text-transform: lowercase; /* Convert all text to lowercase */
         }
-
         h1 {
             font-size: 36px;
             margin-top: 50px;
         }
-
         h2 {
             font-size: 20px;
             margin-bottom: 50px;
         }
-
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .gallery img {
             width: 200px;
             height: 200px;
@@ -37,7 +32,6 @@
             position: relative;
             cursor: pointer;
         }
-
         .gallery img:hover::before {
             content: attr(alt);
             position: absolute;
@@ -65,11 +59,6 @@
         <a href="image3.jpg" target="_blank">
             <img src="image3.jpg" alt="Image 3">
         </a>
-        <!-- Add more images here -->
     </div>
-
-    <script>
-        // JavaScript code can be added here if needed
-    </script>
 </body>
 </html>
