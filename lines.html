@@ -1,42 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>doodled.fun</title>
+    <title>Custom Title</title>
     <link id="favicon" rel="icon" type="image/x-icon" href="faviconlight.ico">
-    <link rel="stylesheet" type="text/css" href="lines.css">
-    <style>
-        :root {
-                --background-color: rgb(0,0,0);
-                --untyped-color: rgb(46,46,46);
-                --typed-color: rgb(255,255,255);
-                --incorrect-color: rgb(0,255,0);
-        }
-        #text span {
-            font-size: 48px;
-            border-bottom: 2px solid transparent;
-        }
-        #text span.correct {
-            color: var(--typed-color);
-        }
-        #text span.incorrect {
-            color: var(--incorrect-color);
-            text-decoration: underline;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background-color: rgb(255,255,255);
-                --untyped-color: rgb(209,209,209);
-                --typed-color: rgb(0,0,0);
-                --incorrect-color: rgb(255,0,0);
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div id="container">
         <div id="text"></div>
     </div>
-    <script src="lines.js"></script>
+    <script src="script.js"></script>
     <script>
         const favicon = document.getElementById('favicon');
         const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -44,13 +17,13 @@
         function updateFavicon() {
             if (darkModeMediaQuery.matches) {
                 favicon.href = 'favicondark.ico';
-                document.documentElement.setAttribute('data-theme', 'dark');
             } else {
                 favicon.href = 'faviconlight.ico';
-                document.documentElement.setAttribute('data-theme', 'light');
             }
         }
+        
         updateFavicon();
+        
         darkModeMediaQuery.addEventListener('change', updateFavicon);
     </script>
 </body>
