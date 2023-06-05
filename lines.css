@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: white;
+    background-color: var(--typed-color);
 }
 
 #container {
@@ -18,7 +18,7 @@ body {
 }
 
 #text {
-    color: #d1d1d1;
+    color: var(--untyped-color);
     font-size: 24px;
     font-family: 'Doodles', sans-serif; /* Set font-family to 'Doodles' */
 }
