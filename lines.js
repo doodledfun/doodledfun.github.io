@@ -39,6 +39,7 @@ const actions = [
 const foods = [
   "pizza",
   "chips",
+  "soda",
   "a cookie",
   "ice cream",
   "a burger",
@@ -78,6 +79,7 @@ function generateRandomSentence() {
   for (let i = 0; i < currentSentence.length; i++) {
     const charSpan = document.createElement("span");
     charSpan.textContent = currentSentence[i];
+    charSpan.style.fontSize = "48px"; // Increase the text size to 48 pixels
     textDiv.appendChild(charSpan);
   }
 }
