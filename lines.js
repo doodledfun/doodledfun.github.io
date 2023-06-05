@@ -1,3 +1,9 @@
+const body = document.body;
+const backgroundColor = getComputedStyle(body).getPropertyValue('--background-color');
+const untypedColor = getComputedStyle(body).getPropertyValue('--untyped-color');
+const typedColor = getComputedStyle(body).getPropertyValue('--typed-color');
+const incorrectColor = getComputedStyle(body).getPropertyValue('--incorrect-color');
+
 const sentenceStructures = [
   "I will not {action} {object} during {class}",
   "I promise to keep my {pet} away from {object} in {class}",
@@ -94,16 +100,16 @@ function handleKeyPress(event) {
 
     if (i < inputText.length) {
       if (inputText[i] === currentSentence[i].toLowerCase()) {
-        charSpan.style.color = "black";
+        charSpan.style.color = typedColor;
         charSpan.style.textDecoration = "none";
         charSpan.style.borderBottom = "2px solid transparent";
       } else {
-        charSpan.style.color = "red";
+        charSpan.style.color = incorrectColor;
         charSpan.style.textDecoration = "none";
         charSpan.style.borderBottom = "2px solid red";
       }
     } else {
-      charSpan.style.color = "#D1D1D1";
+      charSpan.style.color = untypedColor;
       charSpan.style.textDecoration = "none";
       charSpan.style.borderBottom = "2px solid transparent";
     }
