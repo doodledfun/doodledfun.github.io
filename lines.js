@@ -100,7 +100,7 @@ function handleKeyPress(event) {
 
     if (i < inputText.length) {
       if (inputText[i] === currentSentence[i].toLowerCase()) {
-        charSpan.style.color = untypedColor;
+        charSpan.style.color = typedColor;
         charSpan.style.textDecoration = "none";
         charSpan.style.borderBottom = "2px solid transparent";
       } else {
