@@ -106,7 +106,7 @@ function handleKeyPress(event) {
       } else {
         charSpan.style.color = incorrectColor;
         charSpan.style.textDecoration = "none";
-        charSpan.style.borderBottom = "2px solid red";
+        charSpan.style.borderBottom = "2px solid incorrectColor";
       }
     } else {
       charSpan.style.color = untypedColor;
