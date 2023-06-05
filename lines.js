@@ -78,6 +78,7 @@ function generateRandomSentence() {
   for (let i = 0; i < currentSentence.length; i++) {
     const charSpan = document.createElement("span");
     charSpan.textContent = currentSentence[i];
+    charSpan.style.fontSize = "48px"; // Increase the text size to 48 pixels
     textDiv.appendChild(charSpan);
   }
 }
@@ -93,11 +94,17 @@ function handleKeyPress(event) {
     if (i < inputText.length) {
       if (inputText[i] === currentSentence[i].toLowerCase()) {
         charSpan.style.color = "black";
+        charSpan.style.textDecoration = "none";
+        charSpan.style.borderBottom = "2px solid transparent";
       } else {
         charSpan.style.color = "red";
+        charSpan.style.textDecoration = "none";
+        charSpan.style.borderBottom = "2px solid red";
       }
     } else {
       charSpan.style.color = "#D1D1D1";
+      charSpan.style.textDecoration = "none";
+      charSpan.style.borderBottom = "2px solid transparent";
     }
   }
 }
@@ -108,45 +115,17 @@ const inputElement = document.createElement("input");
 inputElement.type = "text";
 inputElement.style.display = "none"; // Hide the input box
 inputElement.addEventListener("input", handleKeyPress);
-document.body.appendChild(inputElement);
-
-let isCtrlKeyPressed = false;
+document.getElementById("container").appendChild(inputElement);
 
 document.addEventListener("keydown", function(event) {
   const key = event.key;
-  const allowedKeys = /^[a-z\s]$/i; // Regular expression to match letters and space
 
-  if (key.match(allowedKeys)) {
-    if (isCtrlKeyPressed && key === "Backspace") {
-      event.preventDefault();
-      const lastWordIndex = inputElement.value.trim().lastIndexOf(" ");
-      inputElement.value = inputElement.value.slice(0, lastWordIndex);
-    } else if (key === "Backspace") {
-      event.preventDefault();
-      inputElement.value = inputElement.value.slice(0, -1);
-    } else {
-      inputElement.value += key;
-    }
+  if (key === "Backspace") {
+    event.preventDefault();
+    inputElement.value = inputElement.value.slice(0, -1);
     handleKeyPress({ target: inputElement });
-  } else if (key === "Control") {
-    isCtrlKeyPressed = true;
+  } else if (/^[a-z\s]$/i.test(key)) {
+    inputElement.value += key;
+    handleKeyPress({ target: inputElement });
   }
 });
-
-document.addEventListener("keyup", function(event) {
-  if (event.key === "Control") {
-    isCtrlKeyPressed = false;
-  }
-});
-
-const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-function handleDarkModeChange(event) {
-  const faviconLink = document.getElementById("favicon");
-  const darkModeEnabled = event.matches;
-  const faviconPath = darkModeEnabled ? "favicondark.ico" : "faviconlight.ico";
-  faviconLink.href = faviconPath;
-}
-
-darkModeQuery.addEventListener("change", handleDarkModeChange);
-handleDarkModeChange(darkModeQuery);
