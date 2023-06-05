@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Custom Title</title>
+    <title>doodled.fun</title>
     <link id="favicon" rel="icon" type="image/x-icon" href="faviconlight.ico">
+    <link rel="stylesheet" type="text/css" href="lines.css">
     <style>
         :root {
             --background-color: rgb(255,255,255);
             --untyped-color: rgb(209,209,209);
             --typed-color: rgb(0,0,0);
             --incorrect-color: rgb(255,0,0);
-        }
-        body {
-            background-color: var(--background-color);
         }
         #text span {
             font-size: 48px;
@@ -28,8 +26,8 @@
             :root {
                 --background-color: rgb(0,0,0);
                 --untyped-color: rgb(46,46,46);
-                --typed-color: col(255,255,255);
-                --incorrect-color: col(255,0,0);
+                --typed-color: rgb(255,255,255);
+                --incorrect-color: rgb(255,0,0);
             }
         }
     </style>
@@ -38,7 +36,7 @@
     <div id="container">
         <div id="text"></div>
     </div>
-    <script src="script.js"></script>
+    <script src="lines.js"></script>
     <script>
         const favicon = document.getElementById('favicon');
         const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
