@@ -19,6 +19,21 @@ body {
 
 #text {
     color: #D1D1D1;
-    font-size: 24px;
-    font-family: 'Doodles', sans-serif; /* Set font-family to 'Doodles' */
+    font-size: 48px;
+    font-family: 'Doodles', sans-serif;
+}
+
+#doodled-link {
+    font-family: 'Doodles', sans-serif;
+    font-size: 24pt;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+#doodled-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
