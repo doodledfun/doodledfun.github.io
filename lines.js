@@ -16,7 +16,7 @@ const sentences = [
   "I will not place a cactus on the teachers chair",
   "I will not declare the school libary a no read zone",
   "I must not organize a pajama olympics with events such as pillow jousting",
-  "I must not turn the school water fountain into a chocolate milk dispenser",
+  "I must not replace the water fountain with a chocolate milk dispenser",
   "I will not replace all textbooks with comics and claim enhances learning",
   "I must not turn up with a live birds nest as a hairstyle on crazy hair day",
   "I will not replace all pencils with giant lollipops",
