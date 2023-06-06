@@ -19,7 +19,7 @@ const sentences = [
   "I will not replace all textbooks with comics",
   "I will not replace all pencils with giant lollipops",
   "I must not organize a whistling performance during assembly"
-];
+];  
 
 let currentSentence = "";
 let isTyped = false;
