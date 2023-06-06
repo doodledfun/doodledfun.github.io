@@ -1,10 +1,19 @@
 const sentenceStructures = [
-  "I am not allowed to hold a bring your {pet} to school day",
-  "I must refrain from organizing a chair-spinning and paper airplane javelin classroom olympics",
-  "I will not enroll the school's pet {pet} in a Tai Chi class.",
-  "I must not challenge the physics teacher to a hotdog-eating contest to prove my superior knowledge of the digestive system.",
-  "I will not organize a synchronized sneezing performance during the school choir concert.",
-  "I must resist the urge to wear a superhero cape and goggles while taking spelling tests.",
+  "I am not allowed to hold a bring your rock to school day",
+  "I must refrain from organizing a chair spinning and paper airplane javelin classroom olympics",
+  "I will not enroll the schools pet hampster in a Tai Chi class",
+  "I must not challenge the physics teacher to a hotdog eating contest to prove my superior knowledge of the digestive system",
+  "I will not organize a synchronized sneezing performance during the school choir concert",
+  "I must resist the urge to wear a superhero cape and goggles while taking spelling tests",
+  "I must not organize a water balloon fight during the school assembly",
+  "I will not attempt teach the schools pet parrot to recite Shakespearean sonnets during quiet study time",
+  "I must not organize a field trip to the moon",
+  "I must not stick pencils in my ears and nose during math",
+  "I must not convince my classmates that I am a time traveler",
+  "I will not attempt to replace the schools fire alarm with a recording of my own laughter",
+  "I must not vandalize the math teacher's car and blame it on a tyrannosaurus rex",
+  "I will not declare myself the official school mascot and demand to be carried around on a golden throne"
+  "I will not attempt to train the school's pet hamster to perform acrobatic stunts and enter it into a talent show"
 ];
 
 let currentSentence = "";
