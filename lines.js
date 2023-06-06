@@ -3,6 +3,9 @@ const sentenceStructures = [
   "I must refrain from organizing a chair-spinning and paper airplane javelin classroom olympics",
   "I will not enroll the school's pet {pet} in a Tai Chi class.",
   "I must not challenge the physics teacher to a hotdog-eating contest to prove my superior knowledge of the digestive system.",
+  "I will not organize a synchronized sneezing performance during the school choir concert.",
+  "I must resist the urge to wear a superhero cape and goggles while taking spelling tests.",
+  ""
 ];
 
 let currentSentence = "";
