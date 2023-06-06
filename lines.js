@@ -11,9 +11,9 @@ const sentenceStructures = [
   "I must not stick pencils in my ears and nose during math",
   "I must not convince my classmates that I am a time traveler",
   "I will not attempt to replace the schools fire alarm with a recording of my own laughter",
-  "I must not vandalize the math teacher's car and blame it on a tyrannosaurus rex",
+  "I must not vandalize the math teachers car and blame it on a tyrannosaurus rex",
   "I will not declare myself the official school mascot and demand to be carried around on a golden throne"
-  "I will not attempt to train the school's pet hamster to perform acrobatic stunts and enter it into a talent show"
+  "I will not attempt to train the schools pet hamster to perform acrobatic stunts and enter it into a talent show"
 ];
 
 let currentSentence = "";
