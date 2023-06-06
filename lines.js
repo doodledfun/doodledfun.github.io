@@ -56,7 +56,7 @@ function handleKeyPress(event) {
       } else {
         charSpan.style.color = "#FF0000"; // Red
         charSpan.style.textDecoration = "none";
-        charSpan.style.borderBottom = "2px solid #FF0000"; // Red
+        charSpan.style.borderBottom = "4px solid #FF0000"; // Red
       }
     } else {
       charSpan.style.color = "#D1D1D1"; // Light gray
