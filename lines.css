@@ -18,22 +18,25 @@ body {
 }
 
 #text {
-    color: #D1D1D1;
     font-size: 48px;
     font-family: 'Doodles', sans-serif;
 }
 
-#doodled-link {
-    font-family: 'Doodles', sans-serif;
-    font-size: 24pt;
-    position: absolute;
-    top: 10px;
-    left: 10px;
+#text span {
     text-decoration: none;
+    position: relative;
+}
+
+#text span.correct {
     color: black;
 }
 
-#doodled-link:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+#text span.incorrect {
+    color: transparent;
+    background-image: linear-gradient(90deg, yellow, transparent 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
