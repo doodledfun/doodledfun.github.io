@@ -33,7 +33,7 @@ function generateRandomSentence() {
   for (let i = 0; i < currentSentence.length; i++) {
     const charSpan = document.createElement("span");
     charSpan.textContent = currentSentence[i];
-    charSpan.style.fontSize = "48px"; // Increase the text size to 48 pixels
+    charSpan.style.fontSize = "36px"; // Increase the text size to 36 pixels
     textDiv.appendChild(charSpan);
   }
 }

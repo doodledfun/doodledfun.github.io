@@ -19,13 +19,13 @@ body {
 
 #text {
     color: #D1D1D1;
-    font-size: 48px;
+    font-size: 36px;
     font-family: 'Doodles', sans-serif;
 }
 
 #doodled-link {
     font-family: 'Doodles', sans-serif;
-    font-size: 24pt;
+    font-size: 18pt;
     position: absolute;
     top: 10px;
     left: 10px;
