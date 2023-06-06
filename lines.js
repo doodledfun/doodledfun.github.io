@@ -94,17 +94,14 @@ function handleKeyPress(event) {
     if (i < inputText.length) {
       if (inputText[i] === currentSentence[i].toLowerCase()) {
         charSpan.style.color = "#000000"; // Black
-        charSpan.style.textDecoration = "none";
-        charSpan.style.borderBottom = "2px solid transparent";
+        charSpan.style.backgroundColor = "transparent"; // Reset background color
       } else {
-        charSpan.style.color = "#FF0000"; // Red
-        charSpan.style.textDecoration = "none";
-        charSpan.style.borderBottom = "2px solid #FF0000"; // Red
+        charSpan.style.color = "#000000"; // Black
+        charSpan.style.backgroundColor = "#FF0000"; // Highlight incorrect character in red
       }
     } else {
       charSpan.style.color = "#D1D1D1"; // Light gray
-      charSpan.style.textDecoration = "none";
-      charSpan.style.borderBottom = "2px solid transparent";
+      charSpan.style.backgroundColor = "transparent"; // Reset background color
     }
   }
 }
