@@ -14,14 +14,15 @@ const sentences = [
   "I will not replace all the textbooks with coloring books",
   "I must not teach squirrels calculus",
   "I will not place a cactus on the teachers chair",
-  "I will not declare the school libary a no read zone",
+  "I will not declare the school library a no-read zone",
   "I must not replace the water fountain with a chocolate milk dispenser",
   "I will not replace all textbooks with comics",
   "I will not replace all pencils with giant lollipops",
-  "I must not organize a whistling performance during assembly",
+  "I must not organize a whistling performance during assembly"
 ];
 
 let currentSentence = "";
+let isTyped = false;
 
 function generateRandomSentence() {
   const randomIndex = Math.floor(Math.random() * sentences.length);
@@ -42,6 +43,12 @@ function handleKeyPress(event) {
   const inputText = event.target.value.toLowerCase();
   const textDiv = document.getElementById("text");
   const charSpans = textDiv.children;
+
+  if (!isTyped && inputText.length > 0) {
+    // Scroll up the text when the first letter is typed
+    textDiv.style.animation = "scroll-up 1s forwards";
+    isTyped = true;
+  }
 
   for (let i = 0; i < charSpans.length; i++) {
     const charSpan = charSpans[i];
