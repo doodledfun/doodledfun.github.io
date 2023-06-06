@@ -1,77 +1,13 @@
 const sentenceStructures = [
-  "I will not {action} {object} during {class}",
-  "I promise to keep my {pet} away from {object} in {class}",
-  "I will not {action} {food} during {class}",
-  "I promise to keep my {pet} away from {food} in {class}",
-  "I will not {action} {food} during {class}",
-  "I will not {action} {object} during {class}",
-  "I will not throw {food} at the {class} teacher",
-  "I will not throw {object} at the {class} teacher",
-  "I will not throw my {pet} at the {class} teacher"
-];
-
-const objects = [
-  "a pencil",
-  "a cell phone",
-  "homework",
-  "a book",
-  "a teacher",
-  "a potato",
-  "a notebook"
-];
-
-const classes = [
-  "math",
-  "english",
-  "history",
-  "science",
-  "music"
-];
-
-const actions = [
-  "throw",
-  "eat",
-  "break",
-  "hide",
-  "play with"
-];
-
-const foods = [
-  "pizza",
-  "chips",
-  "a cookie",
-  "ice cream",
-  "a burger",
-  "ramen"
-];
-
-const pets = [
-  "cat",
-  "dog",
-  "hamster",
-  "bird",
-  "fish",
-  "monkey"
+  "I am not allowed to hold a bring your {pet} to school day",
+  "I must refrain from organizing a chair-spinning and paper airplane javelin classroom olympics",
+  "I will not enroll the school's pet {pet} in a Tai Chi class.",
+  "I must not challenge the physics teacher to a hotdog-eating contest to prove my superior knowledge of the digestive system.",
 ];
 
 let currentSentence = "";
 
 function generateRandomSentence() {
-  const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
-  const randomObject = objects[Math.floor(Math.random() * objects.length)];
-  const randomClass = classes[Math.floor(Math.random() * classes.length)];
-  const randomAction = actions[Math.floor(Math.random() * actions.length)];
-  const randomFood = foods[Math.floor(Math.random() * foods.length)];
-  const randomPet = pets[Math.floor(Math.random() * pets.length)];
-
-  currentSentence = randomStructure
-    .replace("{object}", randomObject)
-    .replace("{class}", randomClass)
-    .replace("{action}", randomAction)
-    .replace("{food}", randomFood)
-    .replace("{pet}", randomPet)
-    .toUpperCase();
-
   const textDiv = document.getElementById("text");
   textDiv.innerHTML = ""; // Clear previous content
 
