@@ -4,12 +4,18 @@ const sentences = [
   "I must not organize a field trip to the moon",
   "I must not convince my classmates that I am a time traveler",
   "I will not change the schools fire alarm to a recording of my laughter",
-  "I will not squash the principles car then blame it aliens",
+  "I will not squash the principles car then blame it on aliens",
   "I must not wear a hat taller than the school building on crazy hat day",
   "I will not replace all the desks with trampolines",
   "I must not implement policies such as mandatory pizza for lunch",
   "I must not sit on a beanbag during class and take random naps",
-  "I will not setup a bouncy castle in my chemistry class",
+  "I will not setup a bouncy castle during chemistry",
+  "I must not turn the school cafeteria into a disco",
+  "I will not replace all the textbooks with coloring books",
+  "I must not teach squirrels calculus",
+  "I must not place a cactus on the teachers chair",
+  "I will not declare the school libary a no read zone",
+  "I must not organize a pajama olympics with events like pillow jousting",
 ];
 
 let currentSentence = "";
