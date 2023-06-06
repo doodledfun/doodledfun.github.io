@@ -78,6 +78,7 @@ function generateRandomSentence() {
   for (let i = 0; i < currentSentence.length; i++) {
     const charSpan = document.createElement("span");
     charSpan.textContent = currentSentence[i];
+    charSpan.style.fontSize = "48px"; // Increase the text size to 48 pixels
     textDiv.appendChild(charSpan);
   }
 }
@@ -94,13 +95,16 @@ function handleKeyPress(event) {
       if (inputText[i] === currentSentence[i].toLowerCase()) {
         charSpan.style.color = "black";
         charSpan.style.textDecoration = "none";
+        charSpan.style.borderBottom = "2px solid transparent";
       } else {
         charSpan.style.color = "red";
-        charSpan.style.textDecoration = "underline";
+        charSpan.style.textDecoration = "none";
+        charSpan.style.borderBottom = "2px solid red";
       }
     } else {
       charSpan.style.color = "#D1D1D1";
       charSpan.style.textDecoration = "none";
+      charSpan.style.borderBottom = "2px solid transparent";
     }
   }
 }
@@ -113,50 +117,15 @@ inputElement.style.display = "none"; // Hide the input box
 inputElement.addEventListener("input", handleKeyPress);
 document.getElementById("container").appendChild(inputElement);
 
-let isCtrlKeyPressed = false;
-
 document.addEventListener("keydown", function(event) {
   const key = event.key;
-  const allowedKeys = /^[a-z\s]$/i; // Regular expression to match letters and space
 
-  if (key.match(allowedKeys)) {
-    if (isCtrlKeyPressed && key === "Backspace") {
-      event.preventDefault();
-      const words = inputElement.value.trim().split(" ");
-      words.pop();
-      inputElement.value = words.join(" ");
-    } else if (key === "Backspace") {
-      event.preventDefault();
-      inputElement.value = inputElement.value.slice(0, -1);
-    } else {
-      inputElement.value += key;
-    }
+  if (key === "Backspace") {
+    event.preventDefault();
+    inputElement.value = inputElement.value.slice(0, -1);
     handleKeyPress({ target: inputElement });
-  } else if (key === "Control") {
-    isCtrlKeyPressed = true;
+  } else if (/^[a-z\s]$/i.test(key)) {
+    inputElement.value += key;
+    handleKeyPress({ target: inputElement });
   }
 });
-
-document.addEventListener("keyup", function(event) {
-  if (event.key === "Control") {
-    isCtrlKeyPressed = false;
-  }
-});
-
-const watermarkText = "doodled.fun";
-const watermarkLink = "https://doodled.fun";
-
-const watermarkDiv = document.createElement("div");
-watermarkDiv.textContent = watermarkText;
-watermarkDiv.style.position = "fixed";
-watermarkDiv.style.top = "10px";
-watermarkDiv.style.left = "10px";
-watermarkDiv.style.cursor = "pointer";
-watermarkDiv.style.fontFamily = "doodles, Arial, sans-serif";
-watermarkDiv.style.fontSize = "14px";
-watermarkDiv.style.color = "#999999";
-watermarkDiv.addEventListener("click", function() {
-  window.location.href = watermarkLink;
-});
-
-document.body.appendChild(watermarkDiv);
