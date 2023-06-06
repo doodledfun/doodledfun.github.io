@@ -1,4 +1,4 @@
-const sentenceStructures = [
+const sentences = [
   "I am not allowed to hold a bring your rock to school day",
   "I must refrain from organizing a chair spinning and paper airplane javelin classroom olympics",
   "I will not enroll the schools pet hampster in a Tai Chi class",
@@ -11,18 +11,16 @@ const sentenceStructures = [
   "I must not stick pencils in my ears and nose during math",
   "I must not convince my classmates that I am a time traveler",
   "I will not attempt to replace the schools fire alarm with a recording of my own laughter",
-  "I must not vandalize the math teachers car and blame it on a tyrannosaurus rex",
-  "I will not declare myself the official school mascot and demand to be carried around on a golden throne"
-  "I will not attempt to train the schools pet hamster to perform acrobatic stunts and enter it into a talent show"
+  "I must not vandalize the math teacher's car and blame it on a tyrannosaurus rex",
+  "I will not declare myself the official school mascot and demand to be carried around on a golden throne",
+  "I will not attempt to train the school's pet hamster to perform acrobatic stunts and enter it into a talent show"
 ];
 
 let currentSentence = "";
 
 function generateRandomSentence() {
-  const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
-
-  currentSentence = randomStructure
-    .toUpperCase();
+  const randomIndex = Math.floor(Math.random() * sentences.length);
+  currentSentence = sentences[randomIndex].toUpperCase();
 
   const textDiv = document.getElementById("text");
   textDiv.innerHTML = ""; // Clear previous content
