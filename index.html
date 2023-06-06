@@ -9,6 +9,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
       background-color: #f0f0f0;
     }
 
@@ -23,9 +24,8 @@
 
     .image {
       position: absolute;
-      top: calc(50% - 100px);
-      left: calc(50% - 100px);
       transform-origin: center center;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -33,20 +33,6 @@
   <div class="text">doodled.fun</div>
 
   <script>
-    // Array of image URLs
-    var images = [
-      'image1.jpg',
-      'image2.jpg',
-      'image3.jpg',
-      'image4.jpg',
-      'image5.jpg',
-      'image6.jpg',
-      'image7.jpg',
-      'image8.jpg',
-      'image9.jpg',
-      'image10.jpg'
-    ];
-
     // Function to generate a random number within a range
     function getRandomNumber(min, max) {
       return Math.random() * (max - min) + min;
@@ -70,20 +56,53 @@
     }
 
     // Function to create and position the images
-    function createImages() {
+    function createImages(imageUrls) {
       var container = document.body;
 
       for (var i = 0; i < 2; i++) {
+        var imageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
         var image = new Image();
-        image.src = images[Math.floor(Math.random() * images.length)];
+        image.src = imageUrl;
         image.classList.add('image');
         image.style.transform = `translate(${getRandomPosition()[0]}px, ${getRandomPosition()[1]}px) rotate(${getRandomRotation()}) scale(${getRandomScale()})`;
+
+        // Create click event listener for each image
+        image.addEventListener('click', function() {
+          var imageName = imageUrl.split('/').pop();
+          window.location.href = `https://doodled.fun/${imageName}`;
+        });
+
         container.appendChild(image);
       }
     }
 
-    // Call the function to create the images
-    createImages();
+    // Load images from folder
+    function loadImagesFromFolder() {
+      var folderPath = 'images/';
+      var imageUrls = [];
+
+      // Get all image file names in the folder
+      fetch(folderPath)
+        .then(response => response.text())
+        .then(data => {
+          var parser = new DOMParser();
+          var html = parser.parseFromString(data, 'text/html');
+          var links = html.querySelectorAll('a');
+          links.forEach(link => {
+            var href = link.getAttribute('href');
+            if (href.match(/\.(jpe?g|png|gif)$/i)) {
+              imageUrls.push(`${folderPath}${href}`);
+            }
+          });
+
+          // Create the images once the image URLs are loaded
+          createImages(imageUrls);
+        })
+        .catch(error => console.log(error));
+    }
+
+    // Call the function to load images from the folder
+    loadImagesFromFolder();
   </script>
 </body>
 </html>
