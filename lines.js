@@ -93,16 +93,16 @@ function handleKeyPress(event) {
 
     if (i < inputText.length) {
       if (inputText[i] === currentSentence[i].toLowerCase()) {
-        charSpan.style.color = "black";
+        charSpan.style.color = "#000000"; // Black
         charSpan.style.textDecoration = "none";
         charSpan.style.borderBottom = "2px solid transparent";
       } else {
-        charSpan.style.color = "red";
+        charSpan.style.color = "#FF0000"; // Red
         charSpan.style.textDecoration = "none";
-        charSpan.style.borderBottom = "2px solid red";
+        charSpan.style.borderBottom = "2px solid #FF0000"; // Red
       }
     } else {
-      charSpan.style.color = "#D1D1D1";
+      charSpan.style.color = "#D1D1D1"; // Light gray
       charSpan.style.textDecoration = "none";
       charSpan.style.borderBottom = "2px solid transparent";
     }
@@ -117,15 +117,36 @@ inputElement.style.display = "none"; // Hide the input box
 inputElement.addEventListener("input", handleKeyPress);
 document.getElementById("container").appendChild(inputElement);
 
+let isCtrlKeyPressed = false;
+
 document.addEventListener("keydown", function(event) {
   const key = event.key;
 
   if (key === "Backspace") {
     event.preventDefault();
-    inputElement.value = inputElement.value.slice(0, -1);
+    const isCtrlPressed = event.ctrlKey || event.metaKey; // Check if Ctrl key is pressed
+    if (isCtrlPressed) {
+      const words = inputElement.value.trim().split(" ");
+      if (words.length > 1) {
+        words.pop(); // Remove the last word
+        inputElement.value = words.join(" ") + " "; // Add space after removing the word
+      } else {
+        inputElement.value = ""; // Clear the input if only one word is present
+      }
+    } else {
+      inputElement.value = inputElement.value.slice(0, -1);
+    }
     handleKeyPress({ target: inputElement });
   } else if (/^[a-z\s]$/i.test(key)) {
     inputElement.value += key;
     handleKeyPress({ target: inputElement });
+  } else if (key === "Control") {
+    isCtrlKeyPressed = true;
+  }
+});
+
+document.addEventListener("keyup", function(event) {
+  if (event.key === "Control") {
+    isCtrlKeyPressed = false;
   }
 });
