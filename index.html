@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .text {
+      font-family: 'doodled';
+      font-size: 48pt;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .image {
+      position: absolute;
+      top: calc(50% - 100px);
+      left: calc(50% - 100px);
+      transform-origin: center center;
+    }
+  </style>
+</head>
+<body>
+  <div class="text">doodled.fun</div>
+
+  <script>
+    // Array of image URLs
+    var images = [
+      'image1.jpg',
+      'image2.jpg',
+      'image3.jpg',
+      'image4.jpg',
+      'image5.jpg',
+      'image6.jpg',
+      'image7.jpg',
+      'image8.jpg',
+      'image9.jpg',
+      'image10.jpg'
+    ];
+
+    // Function to generate a random number within a range
+    function getRandomNumber(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    // Function to generate a random rotation value
+    function getRandomRotation() {
+      return Math.floor(getRandomNumber(-10, 10)) + 'deg';
+    }
+
+    // Function to generate a random scale value
+    function getRandomScale() {
+      return getRandomNumber(0.9, 1.1);
+    }
+
+    // Function to generate a random position on the screen
+    function getRandomPosition() {
+      var posX = getRandomNumber(0, window.innerWidth);
+      var posY = getRandomNumber(0, window.innerHeight);
+      return [posX, posY];
+    }
+
+    // Function to create and position the images
+    function createImages() {
+      var container = document.body;
+
+      for (var i = 0; i < 2; i++) {
+        var image = new Image();
+        image.src = images[Math.floor(Math.random() * images.length)];
+        image.classList.add('image');
+        image.style.transform = `translate(${getRandomPosition()[0]}px, ${getRandomPosition()[1]}px) rotate(${getRandomRotation()}) scale(${getRandomScale()})`;
+        container.appendChild(image);
+      }
+    }
+
+    // Call the function to create the images
+    createImages();
+  </script>
+</body>
+</html>
