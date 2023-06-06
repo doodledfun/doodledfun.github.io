@@ -5,12 +5,16 @@ const sentenceStructures = [
   "I must not challenge the physics teacher to a hotdog-eating contest to prove my superior knowledge of the digestive system.",
   "I will not organize a synchronized sneezing performance during the school choir concert.",
   "I must resist the urge to wear a superhero cape and goggles while taking spelling tests.",
-  ""
 ];
 
 let currentSentence = "";
 
 function generateRandomSentence() {
+  const randomStructure = sentenceStructures[Math.floor(Math.random() * sentenceStructures.length)];
+
+  currentSentence = randomStructure
+    .toUpperCase();
+
   const textDiv = document.getElementById("text");
   textDiv.innerHTML = ""; // Clear previous content
 
