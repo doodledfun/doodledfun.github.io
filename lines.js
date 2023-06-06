@@ -1,10 +1,15 @@
 const sentences = [
-  "I am not allowed to hold a bring your rock to school day",
+  "I must not to hold a bring your rock to school day",
   "I will not enroll the schools hampster in a Tai Chi class",
   "I must not organize a field trip to the moon",
   "I must not convince my classmates that I am a time traveler",
-  "I will not change the schools fire alarm to recording of my laughter",
-  "I must not squash the principles car then blame it aliens",
+  "I will not change the schools fire alarm to a recording of my laughter",
+  "I will not squash the principles car then blame it aliens",
+  "I must not wear a hat taller than the school building on crazy hat day",
+  "I will not replace all the desks with trampolines",
+  "I must not implement policies such as mandatory pizza for lunch",
+  "I must not sit on a beanbag during class and take random naps",
+  "I will not setup a bouncy castle in my chemistry class",
 ];
 
 let currentSentence = "";
