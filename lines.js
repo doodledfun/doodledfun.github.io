@@ -19,7 +19,8 @@ const sentences = [
   "I will not replace all textbooks with comics",
   "I will not replace all pencils with giant lollipops",
   "I must not organize a whistling performance during assembly",
-  "I must not attempt to turn the school bus into a pirate ship",
+  "I will not attempt to turn the school bus into a pirate ship",
+  "I must not lock my fellow classmates in a cage"
 ];  
 
 let currentSentence = "";
