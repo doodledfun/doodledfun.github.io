@@ -21,7 +21,7 @@ const sentences = [
   "I must not organize a whistling performance during assembly",
   "I will not attempt to turn the school bus into a pirate ship",
   "I must not lock my fellow classmates in a cage"
-];  
+];
 
 let currentSentence = "";
 let isTyped = false;
@@ -41,12 +41,16 @@ function generateRandomSentence() {
   }
 }
 
-function handleKeyPress(event) {
-  const inputText = event.target.value.toLowerCase().trim();
+function generateAdditionalSentences() {
+  const containerDiv = document.getElementById("container");
   
-  // Check if the inputText starts with "https://" or "http://"
-  if (!inputText.startsWith("https://") && !inputText.startsWith("http://")) {
-    event.target.value = "https://" + inputText; // Add "https://" to the beginning
+  for (let i = 0; i < 5; i++) {
+    const sentenceIndex = Math.floor(Math.random() * sentences.length);
+    const sentence = sentences[sentenceIndex];
+    
+    const sentenceDiv = document.createElement("div");
+    sentenceDiv.textContent = sentence;
+    containerDiv.appendChild(sentenceDiv);
   }
 }
 
@@ -59,6 +63,9 @@ function handleKeyPress(event) {
     // Scroll up the text when the first letter is typed
     textDiv.style.animation = "scroll-up 1s forwards";
     isTyped = true;
+    
+    // Generate additional sentences
+    generateAdditionalSentences();
   }
 
   for (let i = 0; i < charSpans.length; i++) {
