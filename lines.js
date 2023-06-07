@@ -18,7 +18,8 @@ const sentences = [
   "I must not replace the water fountain with a chocolate milk dispenser",
   "I will not replace all textbooks with comics",
   "I will not replace all pencils with giant lollipops",
-  "I must not organize a whistling performance during assembly"
+  "I must not organize a whistling performance during assembly",
+  "I must not attempt to turn the school bus into a pirate ship",
 ];  
 
 let currentSentence = "";
