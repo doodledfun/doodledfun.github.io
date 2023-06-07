@@ -42,6 +42,15 @@ function generateRandomSentence() {
 }
 
 function handleKeyPress(event) {
+  const inputText = event.target.value.toLowerCase().trim();
+  
+  // Check if the inputText starts with "https://" or "http://"
+  if (!inputText.startsWith("https://") && !inputText.startsWith("http://")) {
+    event.target.value = "https://" + inputText; // Add "https://" to the beginning
+  }
+}
+
+function handleKeyPress(event) {
   const inputText = event.target.value.toLowerCase();
   const textDiv = document.getElementById("text");
   const charSpans = textDiv.children;
