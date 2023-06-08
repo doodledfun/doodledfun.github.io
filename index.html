@@ -3,7 +3,7 @@
 <head>
   <title>doodled.fun</title>
   <style>
-    /* CSS to center the title and position the text */
+    /* CSS to center the text and position the elements */
     body {
       display: flex;
       flex-direction: column;
@@ -13,12 +13,12 @@
       margin: 0;
     }
 
-    /* CSS for the title */
-    #title {
+    /* CSS for the text in the center */
+    #centerText {
       font-family: 'doodles', sans-serif;
       font-size: 36px;
-      font-weight: bold;
       text-align: center;
+      margin-bottom: 20px;
     }
 
     /* CSS for the text at the top left */
@@ -44,26 +44,9 @@
       src: url('doodles.ttf');
     }
   </style>
-  <script>
-    // JavaScript to detect preferred color scheme
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      updateFavicon('favicondark.ico');
-    } else {
-      updateFavicon('faviconlight.ico');
-    }
-
-    // Function to update favicon
-    function updateFavicon(iconPath) {
-      var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-      link.type = 'image/x-icon';
-      link.rel = 'shortcut icon';
-      link.href = iconPath;
-      document.getElementsByTagName('head')[0].appendChild(link);
-    }
-  </script>
 </head>
 <body>
-  <h1 id="title">doodled.fun</h1>
+  <div id="centerText">doodled.fun</div>
   <div id="topLeftText">DOODLED.FUN</div>
 
   <script>
