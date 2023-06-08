@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>doodled.fun</title>
+  <title>Random Doodles</title>
   <style>
     /* CSS to center the title and position the text */
     body {
@@ -24,11 +24,17 @@
     #topLeftText {
       font-family: 'doodles', sans-serif;
       font-size: 18pt;
+      text-transform: uppercase;
       position: absolute;
       top: 10px;
       left: 10px;
-      text-decoration: underline;
       cursor: pointer;
+    }
+
+    /* Underline effect on hover */
+    #topLeftText:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
     }
 
     /* Load the 'doodles' font */
