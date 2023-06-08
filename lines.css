@@ -43,7 +43,10 @@ body {
       transform: translateY(0%);
     }
     100% {
-      transform: translateY(calc(-100vh - 100%));
+      transform: translateY(-100%);
     }
   }
   
+  #text {
+    animation: scroll-up 10s linear infinite;
+  }
