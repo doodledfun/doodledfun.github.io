@@ -10,7 +10,7 @@ const sentences = [
   "I must not implement policies such as mandatory pizza for lunch",
   "I must not sit on a beanbag during class then take random naps",
   "I will not set up a bouncy castle during chemistry",
-  "I must not turn the school cafeter ia into a disco",
+  "I must not turn the school cafeteria into a disco",
   "I will not replace all the textbooks with coloring books",
   "I must not teach squirrels calculus",
   "I will not place a cactus on the teachers chair",
@@ -20,7 +20,7 @@ const sentences = [
   "I will not replace all pencils with giant lollipops",
   "I must not organize a whistling performance during assembly",
   "I will not attempt to turn the school bus into a pirate ship",
-  "I must not lock my fellow classmates in a cage"
+  "I must not lock my fellow classmates in a cage",
 ];  
 
 let currentSentence = "";
