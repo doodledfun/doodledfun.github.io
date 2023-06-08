@@ -21,6 +21,7 @@ const sentences = [
   "I must not organize a whistling performance during assembly",
   "I will not attempt to turn the school bus into a pirate ship",
   "I must not lock my fellow classmates in a cage",
+  "I must not play despacito on repeat on the school loudspeaker"
 ];  
 
 let currentSentence = "";
