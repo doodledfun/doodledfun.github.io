@@ -17,7 +17,7 @@
     #title {
       font-family: 'doodles', sans-serif;
       font-size: 36px;
-      font-weight: bold; /* Added font-weight property to make the title bold */
+      font-weight: bold;
       text-align: center;
     }
 
@@ -44,6 +44,23 @@
       src: url('doodles.ttf');
     }
   </style>
+  <script>
+    // JavaScript to detect preferred color scheme
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      updateFavicon('favicondark.ico');
+    } else {
+      updateFavicon('faviconlight.ico');
+    }
+
+    // Function to update favicon
+    function updateFavicon(iconPath) {
+      var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+      link.type = 'image/x-icon';
+      link.rel = 'shortcut icon';
+      link.href = iconPath;
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
 </head>
 <body>
   <h1 id="title">doodled.fun</h1>
