@@ -1,113 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Random Doodles</title>
   <style>
-    @font-face {
-      font-family: 'doodled';
-      src: url('doodled.ttf') format('truetype');
-    }
-
+    /* CSS to center the title */
     body {
-      margin: 0;
-      padding: 0;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      overflow: hidden;
-      background-color: #f0f0f0;
+      margin: 0;
     }
 
-    .text {
-      font-family: 'doodled';
-      font-size: 48pt;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .image {
-      position: absolute;
-      transform-origin: center center;
-      cursor: pointer;
+    /* CSS for the title */
+    #title {
+      font-family: 'doodles', sans-serif;
+      font-size: 36px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="text">doodled.fun</div>
+  <h1 id="title">doodled.fun</h1>
 
   <script>
-    // Function to generate a random number within a range
-    function getRandomNumber(min, max) {
-      return Math.random() * (max - min) + min;
-    }
+    // JavaScript to load random images
+    window.addEventListener('DOMContentLoaded', function() {
+      var imageContainer = document.body;
 
-    // Function to generate a random rotation value
-    function getRandomRotation() {
-      return Math.floor(getRandomNumber(-10, 10)) + 'deg';
-    }
+      // PHP script to fetch all image files from the 'images' folder
+      <?php
+      $imageDirectory = 'images/';
+      $images = glob($imageDirectory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+      ?>
 
-    // Function to generate a random scale value
-    function getRandomScale() {
-      return getRandomNumber(0.9, 1.1);
-    }
+      // Generate a random index to select an image from the array
+      var randomIndex = Math.floor(Math.random() * <?php echo count($images); ?>);
 
-    // Function to generate a random position on the screen
-    function getRandomPosition() {
-      var posX = getRandomNumber(0, window.innerWidth);
-      var posY = getRandomNumber(0, window.innerHeight);
-      return [posX, posY];
-    }
+      // Create a new image element
+      var image = new Image();
 
-    // Function to create and position the images
-    function createImages(imageUrls) {
-      var container = document.body;
+      // Set the source of the image to a random image from the array
+      image.src = '<?php echo $images[randomIndex]; ?>';
 
-      for (var i = 0; i < 2; i++) {
-        var imageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
-        var image = new Image();
-        image.src = imageUrl;
-        image.classList.add('image');
-        image.style.transform = `translate(${getRandomPosition()[0]}px, ${getRandomPosition()[1]}px) rotate(${getRandomRotation()}) scale(${getRandomScale()})`;
+      // Generate random size and position for the image
+      var randomSize = Math.floor(Math.random() * 200) + 100; // Random size between 100 and 300 pixels
+      var randomPositionX = Math.floor(Math.random() * (window.innerWidth - randomSize));
+      var randomPositionY = Math.floor(Math.random() * (window.innerHeight - randomSize));
 
-        // Create click event listener for each image
-        image.addEventListener('click', function() {
-          var imageName = imageUrl.split('/').pop();
-          window.location.href = `https://doodled.fun/${imageName}`;
-        });
+      // Apply the random size and position to the image
+      image.style.width = randomSize + 'px';
+      image.style.height = randomSize + 'px';
+      image.style.position = 'absolute';
+      image.style.left = randomPositionX + 'px';
+      image.style.top = randomPositionY + 'px';
 
-        container.appendChild(image);
-      }
-    }
-
-    // Load images from folder
-    function loadImagesFromFolder() {
-      var folderPath = 'images/';
-      var imageUrls = [];
-
-      // Get all image file names in the folder
-      fetch(folderPath)
-        .then(response => response.text())
-        .then(data => {
-          var parser = new DOMParser();
-          var html = parser.parseFromString(data, 'text/html');
-          var links = html.querySelectorAll('a');
-          links.forEach(link => {
-            var href = link.getAttribute('href');
-            if (href.match(/\.(jpe?g|png|gif)$/i)) {
-              imageUrls.push(`${folderPath}${href}`);
-            }
-          });
-
-          // Create the images once the image URLs are loaded
-          createImages(imageUrls);
-        })
-        .catch(error => console.log(error));
-    }
-
-    // Call the function to load images from the folder
-    loadImagesFromFolder();
+      // Append the image to the container
+      imageContainer.appendChild(image);
+    });
   </script>
 </body>
 </html>
