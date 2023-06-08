@@ -6,6 +6,7 @@
     /* CSS to center the title and position the text */
     body {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -17,20 +18,17 @@
       font-family: 'doodles', sans-serif;
       font-size: 36px;
       text-align: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      margin: 10px;
     }
 
-    /* CSS for the text at the top left */
-    #topLeftText {
+    /* CSS for the text at the top right */
+    #topRightText {
       font-family: 'doodles', sans-serif;
       font-size: 18px;
       position: absolute;
-      top: 0;
-      left: 0;
-      margin: 10px;
+      top: 10px;
+      right: 10px;
+      text-decoration: underline;
+      cursor: pointer;
     }
 
     /* Load the 'doodles' font */
@@ -42,27 +40,29 @@
 </head>
 <body>
   <h1 id="title">doodled.fun</h1>
-  <div id="topLeftText">doodled.fun</div>
+  <div id="topRightText">doodled.fun</div>
 
   <script>
     // JavaScript to load random images
     window.addEventListener('DOMContentLoaded', function() {
       var imageContainer = document.body;
 
-      // PHP script to fetch all image files from the 'images' folder
-      <?php
-      $imageDirectory = 'images/';
-      $images = glob($imageDirectory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-      ?>
+      // Manually provide the image URLs in an array
+      var images = [
+        'images/image1.jpg',
+        'images/image2.jpg',
+        'images/image3.jpg',
+        // Add more image URLs as needed
+      ];
 
       // Generate a random index to select an image from the array
-      var randomIndex = Math.floor(Math.random() * <?php echo count($images); ?>);
+      var randomIndex = Math.floor(Math.random() * images.length);
 
       // Create a new image element
       var image = new Image();
 
       // Set the source of the image to a random image from the array
-      image.src = '<?php echo $images[randomIndex]; ?>';
+      image.src = images[randomIndex];
 
       // Generate random size and position for the image
       var randomSize = Math.floor(Math.random() * 200) + 100; // Random size between 100 and 300 pixels
@@ -78,6 +78,12 @@
 
       // Append the image to the container
       imageContainer.appendChild(image);
+    });
+
+    // JavaScript to handle click on the top right text
+    var topRightText = document.getElementById('topRightText');
+    topRightText.addEventListener('click', function() {
+      window.location.href = 'https://doodled.fun';
     });
   </script>
 </body>
