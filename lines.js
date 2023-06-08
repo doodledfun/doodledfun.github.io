@@ -4,7 +4,7 @@ const sentences = [
   "I must not organize a field trip to the moon",
   "I must not convince my classmates I am a time traveler",
   "I will not change the school fire alarm to a recording of my laughter",
-  "I will not squash the principals car then blame it on aliens",
+  "I will not squash the principal's car then blame it on aliens",
   "I must not wear a hat taller than the school on crazy hat day",
   "I will not replace all the desks with trampolines",
   "I must not implement policies such as mandatory pizza for lunch",
@@ -13,16 +13,13 @@ const sentences = [
   "I must not turn the school cafeteria into a disco",
   "I will not replace all the textbooks with coloring books",
   "I must not teach squirrels calculus",
-  "I will not place a cactus on the teachers chair",
-  "I will not declare the school library a no read zone",
+  "I will not place a cactus on the teacher's chair",
+  "I will not declare the school library a no-read zone",
   "I must not replace the water fountain with a chocolate milk dispenser",
   "I will not replace all textbooks with comics",
   "I will not replace all pencils with giant lollipops",
-  "I must not organize a whistling performance during assembly",
-  "I will not attempt to turn the school bus into a pirate ship",
-  "I must not lock my fellow classmates in a cage",
-  "I must not play despacito on repeat on the school loudspeaker"
-];  
+  "I must not organize a whistling performance during assembly"
+];
 
 let currentSentence = "";
 let isTyped = false;
@@ -39,15 +36,6 @@ function generateRandomSentence() {
     charSpan.textContent = currentSentence[i];
     charSpan.style.fontSize = "36px"; // Increase the text size to 36 pixels
     textDiv.appendChild(charSpan);
-  }
-}
-
-function handleKeyPress(event) {
-  const inputText = event.target.value.toLowerCase().trim();
-  
-  // Check if the inputText starts with "https://" or "http://"
-  if (!inputText.startsWith("https://") && !inputText.startsWith("http://")) {
-    event.target.value = "https://" + inputText; // Add "https://" to the beginning
   }
 }
 
