@@ -20,13 +20,13 @@
       text-align: center;
     }
 
-    /* CSS for the text at the top right */
-    #topRightText {
+    /* CSS for the text at the top left */
+    #topLeftText {
       font-family: 'doodles', sans-serif;
-      font-size: 18px;
+      font-size: 18pt;
       position: absolute;
       top: 10px;
-      right: 10px;
+      left: 10px;
       text-decoration: underline;
       cursor: pointer;
     }
@@ -40,7 +40,7 @@
 </head>
 <body>
   <h1 id="title">doodled.fun</h1>
-  <div id="topRightText">doodled.fun</div>
+  <div id="topLeftText">doodled.fun</div>
 
   <script>
     // JavaScript to load random images
@@ -80,9 +80,9 @@
       imageContainer.appendChild(image);
     });
 
-    // JavaScript to handle click on the top right text
-    var topRightText = document.getElementById('topRightText');
-    topRightText.addEventListener('click', function() {
+    // JavaScript to handle click on the top left text
+    var topLeftText = document.getElementById('topLeftText');
+    topLeftText.addEventListener('click', function() {
       window.location.href = 'https://doodled.fun';
     });
   </script>
