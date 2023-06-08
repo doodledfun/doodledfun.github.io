@@ -23,31 +23,18 @@ const sentences = [
 
 let currentSentence = "";
 
-function generateRandomSentences() {
-  const mainSentenceIndex = Math.floor(Math.random() * sentences.length);
-  let currentSentence = sentences[mainSentenceIndex].toUpperCase();
+function generateRandomSentence() {
+  const randomIndex = Math.floor(Math.random() * sentences.length);
+  currentSentence = sentences[randomIndex].toUpperCase();
 
   const textDiv = document.getElementById("text");
   textDiv.innerHTML = ""; // Clear previous content
 
-  const mainSentenceSpan = document.createElement("span");
-  mainSentenceSpan.textContent = currentSentence;
-  mainSentenceSpan.style.fontSize = "48px"; // Increase the text size to 48 pixels
-  textDiv.appendChild(mainSentenceSpan);
-
-  const lineCount = Math.floor(Math.random() * 5) + 1; // Randomly generate 1 to 5 lines
-  for (let i = 0; i < lineCount; i++) {
-    const lineIndex = Math.floor(Math.random() * sentences.length);
-    const lineSentence = sentences[lineIndex].toUpperCase();
-
-    const lineBreak = document.createElement("br");
-
-    const lineSpan = document.createElement("span");
-    lineSpan.textContent = lineSentence;
-    lineSpan.style.fontSize = "36px"; // Increase the text size to 36 pixels
-
-    textDiv.appendChild(lineBreak);
-    textDiv.appendChild(lineSpan);
+  for (let i = 0; i < currentSentence.length; i++) {
+    const charSpan = document.createElement("span");
+    charSpan.textContent = currentSentence[i];
+    charSpan.style.fontSize = "36px"; // Increase the text size to 36 pixels
+    textDiv.appendChild(charSpan);
   }
 }
 
