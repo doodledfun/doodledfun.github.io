@@ -1,28 +1,27 @@
 const sentences = [
   "I must not hold a bring your pet rock to school day",
-  "I will not enroll the school hamster in a Tai Chi class",
+  "I will not enroll the school hampster in a Tai Chi class",
   "I must not organize a field trip to the moon",
   "I must not convince my classmates I am a time traveler",
   "I will not change the school fire alarm to a recording of my laughter",
-  "I will not squash the principal's car then blame it on aliens",
+  "I will not squash the principles car then blame it on aliens",
   "I must not wear a hat taller than the school on crazy hat day",
   "I will not replace all the desks with trampolines",
   "I must not implement policies such as mandatory pizza for lunch",
   "I must not sit on a beanbag during class then take random naps",
-  "I will not set up a bouncy castle during chemistry",
+  "I will not setup a bouncy castle during chemistry",
   "I must not turn the school cafeteria into a disco",
   "I will not replace all the textbooks with coloring books",
   "I must not teach squirrels calculus",
-  "I will not place a cactus on the teacher's chair",
-  "I will not declare the school library a no-read zone",
+  "I will not place a cactus on the teachers chair",
+  "I will not declare the school libary a no read zone",
   "I must not replace the water fountain with a chocolate milk dispenser",
   "I will not replace all textbooks with comics",
   "I will not replace all pencils with giant lollipops",
-  "I must not organize a whistling performance during assembly"
+  "I must not organize a whistling performance during assembly",
 ];
 
 let currentSentence = "";
-let isTyped = false;
 
 function generateRandomSentence() {
   const randomIndex = Math.floor(Math.random() * sentences.length);
@@ -43,12 +42,6 @@ function handleKeyPress(event) {
   const inputText = event.target.value.toLowerCase();
   const textDiv = document.getElementById("text");
   const charSpans = textDiv.children;
-
-  if (!isTyped && inputText.length > 0) {
-    // Scroll up the text when the first letter is typed
-    textDiv.style.animation = "scroll-up 1s forwards";
-    isTyped = true;
-  }
 
   for (let i = 0; i < charSpans.length; i++) {
     const charSpan = charSpans[i];
