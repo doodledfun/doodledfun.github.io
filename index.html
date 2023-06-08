@@ -3,7 +3,7 @@
 <head>
   <title>Random Doodles</title>
   <style>
-    /* CSS to center the title */
+    /* CSS to center the title and position the text */
     body {
       display: flex;
       align-items: center;
@@ -17,6 +17,20 @@
       font-family: 'doodles', sans-serif;
       font-size: 36px;
       text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 10px;
+    }
+
+    /* CSS for the text at the top left */
+    #topLeftText {
+      font-family: 'doodles', sans-serif;
+      font-size: 18px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 10px;
     }
 
     /* Load the 'doodles' font */
@@ -28,6 +42,7 @@
 </head>
 <body>
   <h1 id="title">doodled.fun</h1>
+  <div id="topLeftText">doodled.fun</div>
 
   <script>
     // JavaScript to load random images
